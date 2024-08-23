@@ -192,3 +192,22 @@ function pasteText() {
 }
 
 pasteText();
+
+
+/* ==============================-------------------- DELETE BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
+function deleteText() {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    const btnDelete = document.querySelector('.encrypt__button--delete');
+    const validationNotice = document.querySelector('.encrypt__textarea-notice');
+    const charCountHighlight = document.querySelector('.encrypt__char-count--highlight');
+
+    btnDelete.addEventListener('click', () => {
+        textArea.value = '';
+        validationNotice.innerHTML = "<i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos";
+        validationNotice.style.color = "#94a4b7";
+        charCountHighlight.textContent = 0;
+    });
+}
+
+deleteText();
