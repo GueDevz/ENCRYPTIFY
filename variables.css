@@ -62,7 +62,7 @@
     --large-icon: 2.5rem;
     --extra-large-icon: 3rem;
 
-    --border-radius: 3rem;
+    --border-radius: .8rem;
     --box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,7 +93,7 @@
         background-image: url(../assets/images/background.jpg);
         background-repeat: no-repeat;
         background-size: cover;
-        /* background-position: top; */
+        background-position: top;
     }
 
     body.active {

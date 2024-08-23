@@ -50,10 +50,91 @@
 
 main {
     grid-area: main;
+    margin-top: var(--gap-medium);
 }
 
     /*! ----------===== SECTION ENCRYPT =====---------- */
 
+    .encrypt {
+        display: grid;
+        gap: var(--gap-medium);
+    }
+
+    /* ---------- TITLE ---------- */
+
+    .main__title {
+        font-family: var(--title-font);
+        font-size: var(--subtitle-size);
+        font-weight: var(--font-w-800);
+        letter-spacing: .2rem;
+        text-align: center;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: var(--green-gradient);
+    }
+
+    /* ---------- DROPDOWN ---------- */
+
+    .encrypt__dropdown {
+        position: relative;
+        width: 100%;
+        color: var(--colour-main-text);
+    }
+        .dropdown__select {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            height: 4.5rem;
+            font-size: var(--regular);
+            font-weight: var(--font-w-400);
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            border: .1rem solid var(--green-accent-colour);
+        }
+        .dropdown__select,
+        .dropdown__option-list {
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .dropdown__icon {
+            font-size: var(--large);
+            color: var(--green-accent-colour);
+        }
+        .dropdown__option-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            max-height: 0;
+            margin-top: 1rem;
+            opacity: 0;
+            list-style: none;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            border: .1rem solid var(--green-accent-colour);
+            transform-origin: top;
+        }
+        .dropdown__option-list.active {
+            max-height: 20rem;
+            opacity: 1;
+        }
+        .dropdown__option {
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            height: 4.5rem;
+        }
+        .dropdown__option:hover {
+            color: var(--colour-main-text);
+            background: var(--green-accent-colour);
+        }
+        .dropdown.open .dropdown__icon {
+            transform: rotate(-180deg);
+        }
 
 
     /*! ----------===== SECTION DECRYPT =====---------- */
@@ -77,6 +158,7 @@ main {
 /*? ==============================-------------------- HEADER STYLES  --------------------============================== */
 
 /*? ==============================-------------------- MAIN SECTION STYLES  --------------------============================== */
+
 
 /*! ----------===== SECTION ENCRYPT =====---------- */
 
