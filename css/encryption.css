@@ -256,6 +256,89 @@ main {
                 background: var(--green-accent-colour-alt);
             }
 
+    /** ==============================-------------------- MODAL STYLES  --------------------============================== */
+
+    .password__modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        place-content: center;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+        /* ---------- CONTAINER ---------- */
+        .password__modal-content {
+            width: 30rem;
+            height: auto;
+            padding: var(--gap-large);
+            text-align: center;
+            border-radius: var(--border-radius);
+            border: .1rem solid var(--green-accent-colour);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        /* ---------- TITLE ---------- */
+        .password__modal-title {
+            margin-bottom: 2rem;
+            font-family: var(--title-font);
+            font-size: var(--subtitle-size);
+            font-weight: var(--font-w-800);
+            letter-spacing: .2rem;
+            text-align: center;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: var(--green-gradient);
+        }
+        /* ---------- PASS ---------- */
+        .password__modal-pass {
+            font-size: var(--regular);
+            color: var(--colour-main-text);
+        }
+        /* ---------- BUTTONS ---------- */
+        .password__modal-btnCopy {
+            width: 16rem;
+            height: 4.5rem;
+            margin-top: 2rem;
+            font-family: var(--title-font);
+            font-size: var(--small);
+            font-weight: var(--font-w-700);
+            letter-spacing: .2rem;
+            text-transform: uppercase;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            color: var(--text-btn-alt);
+            background: var(--green-accent-colour);
+        }
+        .password__modal-btnClose {
+            width: 4.5rem;
+            height: 4.5rem;
+            border: .25rem solid var(--green-accent-colour);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: var(--green-accent-colour);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .password__modal-icon{
+            font-size: var(--medium-icon);
+        }
+        .password__modal-btnCopy:hover {
+            letter-spacing: 0.35rem;
+            color: var(--text-btn-alt);
+            background: var(--green-accent-colour-alt);
+        }
+        .password__modal-btnClose:hover {
+            border: none;
+            background: var(--green-accent-colour-alt);
+        }
+
+
 
 
     /*! ----------===== SECTION DECRYPT =====---------- */

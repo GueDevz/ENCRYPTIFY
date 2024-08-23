@@ -132,3 +132,42 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/* ==============================-------------------- PASSWORD BUTTON FUNCTION--------------------============================== */
+function generatePassword() {
+    const btnPass = document.querySelector('.encrypt__button--generate-password');
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
+    const passwordModal = document.querySelector('.password__modal');
+    const passwordElement = document.querySelector('.password__modal-pass');
+    const modalTitle = document.querySelector('.password__modal-title');
+    const btnCopy = document.querySelector('.password__modal-btnCopy');
+    const btnClose = document.querySelector('.password__modal-btnClose');
+    const passwordLength = 20;
+
+    btnPass.addEventListener('click', () => {
+        let password = '';
+        while (password.length < passwordLength) {
+            const randomChar = characters[Math.floor(Math.random() * characters.length)];
+            if (!password.includes(randomChar)) {
+                password += randomChar;
+            }
+        }
+
+        passwordElement.textContent = password;
+        passwordModal.style.display = 'grid';
+
+        btnCopy.addEventListener('click', () => {
+            const passwordText = passwordElement.textContent;
+            navigator.clipboard.writeText(passwordText).then(() => {
+                modalTitle.textContent = '¡Contraseña copiada!';
+            }).catch(err => {
+                console.error('Error al copiar la contraseña: ', err);
+            });
+        });
+
+        btnClose.addEventListener('click', () => {
+            passwordModal.style.display = 'none';
+        });
+    });
+}
+
+generatePassword();
