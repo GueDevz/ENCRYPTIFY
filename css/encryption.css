@@ -183,6 +183,79 @@ main {
             font-size: 1.4rem;
             vertical-align: middle;
         }
+        /* ---------- BUTTONS ---------- */
+        .encrypt__actions {
+            display: grid;
+            grid-template:
+                "btnPass btnPass btnPass"
+                "btnEncrypt btnPaste btnDelete";
+            grid-template-columns: 1fr repeat(2, 4.5rem);
+            gap: 1.5rem;
+        }
+            .encrypt__button {
+                height: 4.5rem;
+                font-family: var(--title-font);
+                font-size: var(--small);
+                font-weight: var(--font-w-700);
+                letter-spacing: .2rem;
+                text-transform: uppercase;
+                outline: none;
+                cursor: pointer;
+                border: none;
+                color: var(--text-btn-alt);
+                background: var(--green-accent-colour);
+            }
+
+            .encrypt__button--generate-password,
+            .encrypt__button--encrypt {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .encrypt__button-icon {
+                font-size: var(--medium-icon);
+            }
+
+            .encrypt__button--generate-password {
+                grid-area: btnPass;
+                width: 100%;
+                border-radius: var(--border-radius);
+                border: .25rem solid var(--green-accent-colour);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                color: var(--green-accent-colour);
+                background: rgba(255, 255, 255, 0.1);
+}
+
+            .encrypt__button--paste{
+                grid-area: btnPaste;
+            }
+            .encrypt__button--delete {
+                grid-area: btnDelete;
+            }
+
+            :is(.encrypt__button--paste, .encrypt__button--delete) {
+                border-radius: var(--border-radius);
+}
+
+            .encrypt__button--encrypt {
+                grid-area: btnEncrypt;
+                font-weight: var(--font-w-900);
+            }
+
+            .encrypt__button:hover {
+                letter-spacing: 0.35rem;
+                color: var(--text-btn-alt);
+                background: var(--green-accent-colour-alt);
+            }
+
+            .encrypt__button--generate-password:hover {
+                border: none;
+                background: var(--green-accent-colour-alt);
+            }
+
 
 
     /*! ----------===== SECTION DECRYPT =====---------- */
