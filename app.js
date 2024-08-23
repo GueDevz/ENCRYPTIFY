@@ -63,3 +63,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+/* ==============================-------------------- DROPDOWN TO CHOOSE ENCRYPTION ALGORITHM --------------------============================== */
+
+function dropdown() {
+    const dropdownMenu = document.querySelector('.dropdown');
+    const selectBtn = document.querySelector('.dropdown__select');
+    const titleSelect = document.querySelector('.dropdown__title');
+    const options = document.querySelectorAll('.dropdown__option');
+    const optionList = document.querySelector('.dropdown__option-list');
+
+    selectBtn.addEventListener('click', () => {
+        optionList.classList.toggle('active');
+        dropdownMenu.classList.toggle('open');
+    });
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            let selectOption = option.querySelector('.dropdown__option-text').innerText;
+            titleSelect.innerText = selectOption;
+            optionList.classList.remove('active');
+            dropdownMenu.classList.remove('open');
+        });
+    });
+}
+
+dropdown();
