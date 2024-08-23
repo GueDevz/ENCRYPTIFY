@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* ==============================-------------------- HOME PAGE TITLE ANIMATION--------------------============================== */
+/* ==============================-------------------- BUTTON DARK/LIGHT MODE --------------------============================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     const switcher = document.querySelector('.header__button');
@@ -104,3 +104,31 @@ function characterCounter() {
 }
 
 characterCounter();
+
+
+/* ==============================-------------------- LIMIT DYNAMIC TEXTAREA COUNTER ENCRYPT  --------------------============================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    const validationNotice = document.querySelector('.encrypt__textarea-notice');
+    const originalNoticeText = validationNotice.innerHTML;
+
+    textArea.addEventListener('input', validateText);
+
+    function validateText() {
+        const regex = /^[a-z0-9\s]*$/;
+        const contentTextarea = textArea.value;
+
+        if (contentTextarea === "") {
+            validationNotice.innerHTML = originalNoticeText;
+            validationNotice.style.color = "";
+        } else if (!regex.test(contentTextarea)) {
+            validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> Error: tu texto contiene mayúsculas o caracteres";
+            validationNotice.style.color = "red";
+        } else {
+            validationNotice.innerHTML = "<i class='bx bxs-check-circle'></i> Texto válido";
+            validationNotice.style.color = "#20db93";
+        }
+    }
+});
+
+
