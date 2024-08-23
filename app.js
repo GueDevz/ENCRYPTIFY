@@ -38,3 +38,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startReveal();
 });
+
+
+/* ==============================-------------------- HOME PAGE TITLE ANIMATION--------------------============================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const switcher = document.querySelector('.header__button');
+    const switchIcon = document.querySelector('.header__button-icon');
+    const logo = document.querySelector('.header__logo');
+    const body = document.querySelector('body');
+
+    switcher.addEventListener('click', () => {
+        body.classList.toggle('active');
+
+        if (body.classList.contains('active')) {
+            switchIcon.classList.replace('bx-sun', 'bx-moon');
+            body.style.backgroundImage = 'url(../assets/images/background-2.jpg)';
+            logo.src = "../assets/images/Logo-dark.svg";
+
+        } else {
+            switchIcon.classList.replace('bx-moon', 'bx-sun');
+            body.style.backgroundImage = 'url(../assets/images/background.jpg)';
+            logo.src = "../assets/images/Logo-light.svg";
+        }
+    });
+});

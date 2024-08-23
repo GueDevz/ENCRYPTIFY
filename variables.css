@@ -95,3 +95,14 @@
         background-size: cover;
         /* background-position: top; */
     }
+
+    body.active {
+        --background: #ebebeb;
+        --element-bg: #f5f5f5;
+        --bg-neutral-btn: #ffffff;
+        --colour-main-text: #131922;
+        --colour-secondary-text: #889cb5;
+        --placeholder-text: #cccccc;
+        --accent-colour:#889cb5;
+        --gradient: linear-gradient(to right, #f5f9ff, transparent);
+    }
