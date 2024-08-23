@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* ==============================-------------------- PASSWORD BUTTON FUNCTION--------------------============================== */
+/* ==============================-------------------- PASSWORD BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
 function generatePassword() {
     const btnPass = document.querySelector('.encrypt__button--generate-password');
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
@@ -171,3 +171,24 @@ function generatePassword() {
 }
 
 generatePassword();
+
+
+/* ==============================-------------------- PASTE BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
+function pasteText() {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    const btnPaste = document.querySelector('.encrypt__button--paste');
+
+    btnPaste.addEventListener('click', () => {
+        navigator.clipboard.readText().then((text) => {
+            textArea.value = text;
+
+            const event = new Event('input', { bubbles: true });
+            textArea.dispatchEvent(event);
+        }).catch(err => {
+            console.error('Failed to read clipboard contents: ', err);
+        });
+    });
+}
+
+pasteText();
