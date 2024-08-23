@@ -90,3 +90,17 @@ function dropdown() {
 }
 
 dropdown();
+
+
+/* ==============================-------------------- LIMIT DYNAMIC TEXTAREA COUNTER ENCRYPT  --------------------============================== */
+function characterCounter() {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    const charCountHighlight = document.querySelector('.encrypt__char-count--highlight');
+
+    textArea.addEventListener('input', function() {
+        const currentLength = this.value.length;
+        charCountHighlight.textContent = currentLength;
+    });
+}
+
+characterCounter();
