@@ -253,3 +253,34 @@ function encryptBtn() {
 
 const btnEncrypt = document.querySelector('.encrypt__button--encrypt');
 btnEncrypt.addEventListener('click', encryptBtn);
+
+
+/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
+function resetText() {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    const message = document.querySelector('.decrypt__textarea');
+    const btnReset = document.querySelector('.decrypt__button--reset');
+    const validationNotice = document.querySelector('.encrypt__textarea-notice');
+    const charCountHighlight = document.querySelector('.encrypt__char-count--highlight');
+    const inputPassword = document.querySelector('.decrypt__input-pass');
+    const dropdownTitle = document.querySelector('.dropdown__select-title');
+
+    btnReset.addEventListener('click', () => {
+        textArea.value = '';
+        message.value = '';
+        inputPassword.value = '';
+        validationNotice.innerHTML = "<i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos";
+        validationNotice.style.color = "#94a4b7";
+        charCountHighlight.textContent = 0;
+        dropdownTitle.innerText = 'Seleccionar una opción';
+
+        navigator.clipboard.writeText('').then(() => {
+            console.log('Portapapeles limpiado');
+        }).catch(err => {
+            console.error('Error al intentar limpiar el portapapeles: ', err);
+        });
+    });
+}
+
+resetText();
