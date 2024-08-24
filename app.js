@@ -340,7 +340,7 @@ function resetText() {
 resetText();
 
 
-/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
+/* ==============================-------------------- COPY BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
 
 function copyText() {
     const message = document.querySelector('.decrypt__textarea');
@@ -362,8 +362,8 @@ btnCopy.addEventListener('click', copyText);
 
 /* ==============================-------------------- DECRYPTION ALGORITHMS |SECTION DECRYPT|--------------------============================== */
 
-function decrypt(stringDecrypt) {
-    const aluraDecryptionMethod = {
+function aluraDecryptionMethod(stringDecrypt) {
+    const decryptionMethod = {
         "ai": "a",
         "enter": "e",
         "imes": "i",
@@ -371,20 +371,75 @@ function decrypt(stringDecrypt) {
         "ufat": "u"
     };
 
-    for (let pattern in aluraDecryptionMethod) {
+    for (let pattern in decryptionMethod) {
         if (stringDecrypt.includes(pattern)) {
-            stringDecrypt = stringDecrypt.replaceAll(pattern, aluraDecryptionMethod[pattern]);
+            stringDecrypt = stringDecrypt.replaceAll(pattern, decryptionMethod[pattern]);
         }
     }
 
     return stringDecrypt;
 }
 
+function cesarDecryptionMethod(text, move) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    text = text.toLowerCase();
+
+    let decryptedText = '';
+
+    for (let char of text) {
+        if (alphabet.includes(char)) {
+            let newIndex = (alphabet.indexOf(char) - move + 26) % 26;
+            decryptedText += alphabet[newIndex];
+        } else {
+            decryptedText += char;
+        }
+    }
+
+    return decryptedText;
+}
+
+function vigenereDecryptionMethod(text, key) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    text = text.toLowerCase().replace(/\s/g, '');
+    key = key.toLowerCase().repeat(Math.ceil(text.length / key.length));
+
+    let decryptedText = '';
+
+    for (let i = 0; i < text.length; i++) {
+        if (alphabet.includes(text[i])) {
+            let textIndex = alphabet.indexOf(text[i]);
+            let keyIndex = alphabet.indexOf(key[i]);
+            let newIndex = (textIndex - keyIndex + 26) % 26;
+            decryptedText += alphabet[newIndex];
+        } else {
+            decryptedText += text[i];
+        }
+    }
+
+    return decryptedText;
+}
+
+
 /* ==============================-------------------- DECRYPT BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
 
 function decryptBtn() {
     const message = document.querySelector('.decrypt__textarea');
-    const decryptedText = decrypt(message.value);
+    const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
+
+    let decryptedText;
+
+    if (dropdownTitle === "Alura Encrypt") {
+        decryptedText = aluraDecryptionMethod(message.value);
+    } else if (dropdownTitle === "César") {
+        const shift = 3;
+        decryptedText = cesarDecryptionMethod(message.value, shift);
+    } else if (dropdownTitle === "Vigenère") {
+        const key = "clave";
+        decryptedText = vigenereDecryptionMethod(message.value, key);
+    } else {
+        return;
+    }
+
     message.value = decryptedText;
 }
 
