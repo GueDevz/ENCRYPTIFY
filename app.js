@@ -284,3 +284,24 @@ function resetText() {
 }
 
 resetText();
+
+
+/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
+function copyText() {
+    const message = document.querySelector('.decrypt__textarea');
+    message.select();
+    message.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(message.value)
+        .then(() => {
+        console.log('Texto copiado al portapapeles');
+        })
+        .catch(err => {
+        console.error('Error al copiar el texto: ', err);
+        });
+}
+
+const btnCopy = document.querySelector('.decrypt__button--copy');
+btnCopy.addEventListener('click', copyText);
+
