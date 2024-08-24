@@ -14,6 +14,115 @@
     <title>ENCRYPTIFY</title>
 </head>
 <body>
-    
+    <div class="container">
+        <header class="header">
+            <img src="../assets/images/Logo-light.svg" alt="Logo de Encryptify" class="header__logo">
+            <button class="header__button" aria-label="Cambiar a modo claro">
+                <i class="bx bx-sun header__button-icon" aria-hidden="true"></i>
+            </button>
+        </header>
+        <main class="main">
+            <section class="encrypt">
+                <h2 class="encrypt__title main__title">Encriptar</h2>
+
+                <div class="encrypt__dropdown dropdown" id="dropdown">
+                    <div class="dropdown__select input">
+                        <span class="dropdown__select-title dropdown__title selected">Seleccionar una opción</span>
+                        <i class='bx bx-chevron-down dropdown__icon'></i>
+                    </div>
+                <ul class="dropdown__option-list input" aria-labelledby="dropdown">
+                    <li class="dropdown__option">
+                        <span class="dropdown__option-text">Alura Encrypt</span>
+                    </li>
+                    <li class="dropdown__option">
+                        <span class="dropdown__option-text">César</span>
+                    </li>
+                    <li class="dropdown__option">
+                        <span class="dropdown__option-text">Vigenère</span>
+                    </li>
+                </ul>
+                </div>
+
+                <div class="encrypt__textarea-container">
+                    <span class="encrypt__char-count" id="charCount">500 / <span class="encrypt__char-count--highlight">0</span></span>
+                    <textarea class="encrypt__textarea-input textarea__input" maxlength="500" id="textareaEncrypt" placeholder="Ningún texto ingresado"></textarea>
+                    <span class="encrypt__textarea-notice">
+                        <i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos
+                    </span>
+                </div>
+
+                <div class="encrypt__actions">
+                    <button type="button" class=" encrypt__button encrypt__button--generate-password">
+                        <span class="encrypt__button-icon">
+                            <i class='bx bxs-key'></i>
+                        </span>
+                        <span class="encrypt__button-text">Generar Contraseña</span>
+                    </button>
+                    <button type="button" class="encrypt__button encrypt__button--paste">
+                        <span class="encrypt__button-icon">
+                            <i class='bx bxs-paste' ></i>
+                        </span>
+                    </button>
+                    <button type="button" class="encrypt__button encrypt__button--delete">
+                        <span class="encrypt__button-icon">
+                            <i class='bx bxs-trash'></i>
+                        </span>
+                    </button>
+                    <button type="button" class="encrypt__button encrypt__button--encrypt">
+                        <span class="encrypt__button-icon">
+                            <i class='bx bxs-lock'></i>
+                        </span>
+                        <span class="encrypt__button-text">Encriptar</span>
+                    </button>
+                </div>
+                <div class="password__modal">
+                    <div class="password__modal-content">
+                        <h4 class="password__modal-title">Contraseña Generada</h4>
+                        <span class="password__modal-pass"></span>
+                        <div class="password__modal-buttons">
+                            <button type="button" class="modal__button password__modal-btnCopy">
+                                <span class="password__modal-icon">
+                                    <i class='bx bxs-copy-alt'></i>
+                                </span>
+                                <span class="password__modal-btnText">Copiar</span>
+                            </button>
+                            <button type="button" class="modal__button password__modal-btnClose">
+                                <span class="password__modal-icon">
+                                    <i class='bx bx-x' ></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section class="decrypt">
+                <h2 class="decrypt__title main__title">Mensaje</h2>
+                <input type="password" class="decrypt__input-pass" placeholder="Contraseña">
+                <textarea class="decrypt__textarea textarea__input" id="textareaDecrypt"></textarea>
+                <div class="decrypt__actions">
+                    <button type="button" class="decrypt__button decrypt__button--decrypt">
+                        <span class="encrypt__button-icon">
+                            <i class='bx bxs-lock-open'></i>
+                        </span>
+                        <span class="decrypt__button-text">Desencriptar</span>
+                    </button>
+                    <button type="button" class=" decrypt__button decrypt__button--copy">
+                        <span class="decrypt__button-icon">
+                            <i class='bx bxs-copy-alt'></i>
+                        </span>
+                    </button>
+                    <button type="button" class="decrypt__button decrypt__button--reset">
+                        <span class="decrypt__button-icon">
+                            <i class='bx bx-reset'></i>
+                        </span>
+                    </button>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+
+        </footer>
+    </div>
 </body>
 </html>
