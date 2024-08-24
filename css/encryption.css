@@ -27,6 +27,11 @@
 
 /* ---------- LOGO ---------- */
 .header__logo {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header__logo-image {
     width: 18rem;
 }
 
