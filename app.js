@@ -160,6 +160,7 @@ function generatePassword() {
         passwordElement.textContent = password;
         passwordModal.style.display = 'grid';
         inputPassword.disabled = false;
+        inputPassword.style.border = '.1px solid #20db93';
         inputPassword.placeholder = 'Introduce la Contraseña';
         inputPassword.style.borderColor = '';
 
@@ -319,6 +320,7 @@ btnEncrypt.addEventListener('click', encryptBtn);
 document.addEventListener('DOMContentLoaded', () => {
     const inputPassword = document.querySelector('.decrypt__input-pass');
     inputPassword.disabled = true;
+    inputPassword.style.border = 'none';
 });
 
 
@@ -343,7 +345,7 @@ function resetText() {
         charCountHighlight.textContent = 0;
         dropdownTitle.innerText = 'Seleccionar una opción';
         inputPassword.placeholder = 'Contraseña';
-        inputPassword.style.borderColor = '#20db93';
+        inputPassword.style.border = 'none';
 
         navigator.clipboard.writeText('').then(() => {
             console.log('Portapapeles limpiado');
