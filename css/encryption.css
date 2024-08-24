@@ -127,7 +127,7 @@ main {
             display: flex;
             align-items: center;
             padding: 0 2rem;
-            height: 4.5rem;
+            height: 5.8rem;
         }
         .dropdown__option:hover {
             color: var(--colour-main-text);
