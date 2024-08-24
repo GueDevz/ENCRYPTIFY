@@ -255,7 +255,7 @@ const btnEncrypt = document.querySelector('.encrypt__button--encrypt');
 btnEncrypt.addEventListener('click', encryptBtn);
 
 
-/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
 
 function resetText() {
     const textArea = document.querySelector('.encrypt__textarea-input');
@@ -286,7 +286,7 @@ function resetText() {
 resetText();
 
 
-/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+/* ==============================-------------------- RESET BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
 
 function copyText() {
     const message = document.querySelector('.decrypt__textarea');
@@ -304,4 +304,36 @@ function copyText() {
 
 const btnCopy = document.querySelector('.decrypt__button--copy');
 btnCopy.addEventListener('click', copyText);
+
+
+/* ==============================-------------------- DECRYPTION ALGORITHMS |SECTION DECRYPT|--------------------============================== */
+
+function decrypt(stringDecrypt) {
+    const aluraDecryptionMethod = {
+        "ai": "a",
+        "enter": "e",
+        "imes": "i",
+        "ober": "o",
+        "ufat": "u"
+    };
+
+    for (let pattern in aluraDecryptionMethod) {
+        if (stringDecrypt.includes(pattern)) {
+            stringDecrypt = stringDecrypt.replaceAll(pattern, aluraDecryptionMethod[pattern]);
+        }
+    }
+
+    return stringDecrypt;
+}
+
+/* ==============================-------------------- DECRYPT BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
+
+function decryptBtn() {
+    const message = document.querySelector('.decrypt__textarea');
+    const decryptedText = decrypt(message.value);
+    message.value = decryptedText;
+}
+
+const btnDecrypt = document.querySelector('.decrypt__button--decrypt');
+btnDecrypt.addEventListener('click', decryptBtn);
 
