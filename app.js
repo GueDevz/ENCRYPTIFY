@@ -107,28 +107,31 @@ characterCounter();
 
 
 /* ==============================-------------------- LIMIT DYNAMIC TEXTAREA COUNTER ENCRYPT  --------------------============================== */
-document.addEventListener('DOMContentLoaded', () => {
+
+function validateText() {
     const textArea = document.querySelector('.encrypt__textarea-input');
     const validationNotice = document.querySelector('.encrypt__textarea-notice');
-    const originalNoticeText = validationNotice.innerHTML;
+    const regex = /^[a-z0-9\s]*$/;
+    const contentTextarea = textArea.value;
 
-    textArea.addEventListener('input', validateText);
-
-    function validateText() {
-        const regex = /^[a-z0-9\s]*$/;
-        const contentTextarea = textArea.value;
-
-        if (contentTextarea === "") {
-            validationNotice.innerHTML = originalNoticeText;
-            validationNotice.style.color = "";
-        } else if (!regex.test(contentTextarea)) {
-            validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> Error: tu texto contiene mayúsculas o caracteres";
-            validationNotice.style.color = "red";
-        } else {
-            validationNotice.innerHTML = "<i class='bx bxs-check-circle'></i> Texto válido";
-            validationNotice.style.color = "#20db93";
-        }
+    if (contentTextarea === "") {
+        validationNotice.innerHTML = "<i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos";
+        validationNotice.style.color = "#94a4b7";
+        return false;
+    } else if (!regex.test(contentTextarea)) {
+        validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> Error: tu texto contiene mayúsculas o caracteres";
+        validationNotice.style.color = "red";
+        return false;
+    } else {
+        validationNotice.innerHTML = "<i class='bx bxs-check-circle'></i> Texto válido";
+        validationNotice.style.color = "#20db93";
+        return true;
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    textArea.addEventListener('input', validateText);
 });
 
 
@@ -211,3 +214,42 @@ function deleteText() {
 }
 
 deleteText();
+
+
+/* ==============================-------------------- ENCRYPTION ALGORITHMS |SECTION ENCRYPT|--------------------============================== */
+
+function encrypt(stringEncrypt) {
+    const aluraEncryptionMethod = {
+        "a": "ai",
+        "e": "enter",
+        "i": "imes",
+        "o": "ober",
+        "u": "ufat"
+    };
+
+    stringEncrypt = stringEncrypt.toLowerCase();
+
+    let encryptedText = '';
+    for (let char of stringEncrypt) {
+        encryptedText += aluraEncryptionMethod[char] || char;
+    }
+
+    return encryptedText;
+}
+
+/* ==============================-------------------- ENCRYPT BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+function encryptBtn() {
+    const textArea = document.querySelector('.encrypt__textarea-input');
+    const message = document.querySelector('.decrypt__textarea');
+
+    if (validateText()) {
+        const encryptedText = encrypt(textArea.value);
+
+        message.value = encryptedText;
+        message.style.backgroundImage = "none";
+        // textArea.value = '';
+    }
+}
+
+const btnEncrypt = document.querySelector('.encrypt__button--encrypt');
+btnEncrypt.addEventListener('click', encryptBtn);
