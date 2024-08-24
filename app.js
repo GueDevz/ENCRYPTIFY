@@ -337,6 +337,7 @@ function resetText() {
         textArea.value = '';
         message.value = '';
         inputPassword.value = '';
+        inputPassword.disabled = true;
         validationNotice.innerHTML = "<i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos";
         validationNotice.style.color = "#94a4b7";
         charCountHighlight.textContent = 0;

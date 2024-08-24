@@ -127,7 +127,7 @@ main {
             display: flex;
             align-items: center;
             padding: 0 2rem;
-            height: 4.5rem;
+            height: 5.8rem;
         }
         .dropdown__option:hover {
             color: var(--colour-main-text);
@@ -338,6 +338,7 @@ main {
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 2;
         display: none;
         place-content: center;
         width: 100%;
@@ -433,6 +434,9 @@ main {
 @media (width >= 768px) {
 /*? ==============================-------------------- CONTAINER STYLES  --------------------============================== */
 
+.container {
+    width: 70%;
+}
 
 /*? ==============================-------------------- HEADER STYLES  --------------------============================== */
 
@@ -440,6 +444,24 @@ main {
 
 
 /*! ----------===== SECTION ENCRYPT =====---------- */
+
+.encrypt {
+    gap: var(--gap-large);
+}
+
+.encrypt__actions {
+    gap: var(--gap-large);
+}
+
+/*! ----------===== SECTION DECRYPT =====---------- */
+.decrypt {
+    gap: var(--gap-large);
+}
+
+.decrypt__actions {
+    gap: var(--gap-large);
+}
+
 
 /*? ==============================-------------------- FOOTER STYLES  --------------------============================== */
 
@@ -460,18 +482,31 @@ main {
     display: grid;
     grid-template:
     "encrypt decrypt";
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 10rem;
 }
 
 /*! ----------===== SECTION ENCRYPT =====---------- */
 
 .encrypt {
     grid-area: encrypt;
+    min-height: 80%;
+    margin-bottom: 0;
+}
+
+.textarea__input {
+    height: 35rem;
+}
+
+.decrypt__textarea {
+    height: 46rem;
 }
 
 /*! ----------===== SECTION DECRYPT =====---------- */
 .decrypt {
     grid-area: decrypt;
+    min-height: 80%;
 }
 
 /*? ==============================-------------------- FOOTER STYLES  --------------------============================== */
