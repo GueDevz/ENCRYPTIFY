@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==============================-------------------- PASSWORD BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
 function generatePassword() {
     const btnPass = document.querySelector('.encrypt__button--generate-password');
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
@@ -144,6 +145,7 @@ function generatePassword() {
     const modalTitle = document.querySelector('.password__modal-title');
     const btnCopy = document.querySelector('.password__modal-btnCopy');
     const btnClose = document.querySelector('.password__modal-btnClose');
+    const inputPassword = document.querySelector('.decrypt__input-pass');
     const passwordLength = 20;
 
     btnPass.addEventListener('click', () => {
@@ -157,6 +159,9 @@ function generatePassword() {
 
         passwordElement.textContent = password;
         passwordModal.style.display = 'grid';
+        inputPassword.disabled = false;
+        inputPassword.placeholder = 'Introduce la Contraseña';
+        inputPassword.style.borderColor = '';
 
         btnCopy.addEventListener('click', () => {
             const passwordText = passwordElement.textContent;
@@ -309,6 +314,14 @@ const btnEncrypt = document.querySelector('.encrypt__button--encrypt');
 btnEncrypt.addEventListener('click', encryptBtn);
 
 
+/* ==============================-------------------- DISABLE PASSWORD INPUT |SECTION DECRYPT|--------------------============================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputPassword = document.querySelector('.decrypt__input-pass');
+    inputPassword.disabled = true;
+});
+
+
 /* ==============================-------------------- RESET BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
 
 function resetText() {
@@ -328,6 +341,8 @@ function resetText() {
         validationNotice.style.color = "#94a4b7";
         charCountHighlight.textContent = 0;
         dropdownTitle.innerText = 'Seleccionar una opción';
+        inputPassword.placeholder = 'Contraseña';
+        inputPassword.style.borderColor = '#20db93';
 
         navigator.clipboard.writeText('').then(() => {
             console.log('Portapapeles limpiado');
@@ -425,6 +440,15 @@ function vigenereDecryptionMethod(text, key) {
 function decryptBtn() {
     const message = document.querySelector('.decrypt__textarea');
     const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
+    const inputPassword = document.querySelector('.decrypt__input-pass');
+
+    if (!inputPassword.disabled && inputPassword.value.trim() === '') {
+
+        inputPassword.placeholder = 'Colocar contraseña';
+        inputPassword.style.borderColor = 'red';
+        inputPassword.focus();
+        return;
+    }
 
     let decryptedText;
 
@@ -434,7 +458,7 @@ function decryptBtn() {
         const shift = 3;
         decryptedText = cesarDecryptionMethod(message.value, shift);
     } else if (dropdownTitle === "Vigenère") {
-        const key = "clave";
+        const key = inputPassword.value.trim(); // Usar la contraseña ingresada como clave
         decryptedText = vigenereDecryptionMethod(message.value, key);
     } else {
         return;
@@ -445,4 +469,3 @@ function decryptBtn() {
 
 const btnDecrypt = document.querySelector('.decrypt__button--decrypt');
 btnDecrypt.addEventListener('click', decryptBtn);
-
