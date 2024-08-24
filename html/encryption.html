@@ -45,7 +45,7 @@
 
                 <div class="encrypt__textarea-container">
                     <span class="encrypt__char-count" id="charCount">500 / <span class="encrypt__char-count--highlight">0</span></span>
-                    <textarea class="encrypt__textarea-input input" maxlength="500" id="textareaEncrypt" placeholder="Ningún texto ingresado"></textarea>
+                    <textarea class="encrypt__textarea-input textarea__input" maxlength="500" id="textareaEncrypt" placeholder="Ningún texto ingresado"></textarea>
                     <span class="encrypt__textarea-notice">
                         <i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos
                     </span>
@@ -97,7 +97,27 @@
 
             </section>
             <section class="decrypt">
-
+                <h2 class="decrypt__title main__title">Mensaje</h2>
+                <input type="password" class="decrypt__input-pass" placeholder="Introduce la Contraseña">
+                <textarea class="decrypt__textarea textarea__input" id="textareaDecrypt"></textarea>
+                <div class="decrypt__actions">
+                    <button type="button" class="decrypt__button decrypt__button--decrypt">
+                        <span class="encrypt__button-icon">
+                            <i class='bx bxs-lock-open'></i>
+                        </span>
+                        <span class="decrypt__button-text">Desencriptar</span>
+                    </button>
+                    <button type="button" class=" decrypt__button decrypt__button--copy">
+                        <span class="decrypt__button-icon">
+                            <i class='bx bxs-copy-alt'></i>
+                        </span>
+                    </button>
+                    <button type="button" class="decrypt__button decrypt__button--reset">
+                        <span class="decrypt__button-icon">
+                            <i class='bx bx-reset'></i>
+                        </span>
+                    </button>
+                </div>
             </section>
         </main>
         <footer class="footer">
