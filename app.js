@@ -218,8 +218,8 @@ deleteText();
 
 /* ==============================-------------------- ENCRYPTION ALGORITHMS |SECTION ENCRYPT|--------------------============================== */
 
-function encrypt(stringEncrypt) {
-    const aluraEncryptionMethod = {
+function aluraEncryptionMethod(stringEncrypt) {
+    const encryptionMethod = {
         "a": "ai",
         "e": "enter",
         "i": "imes",
@@ -231,19 +231,73 @@ function encrypt(stringEncrypt) {
 
     let encryptedText = '';
     for (let char of stringEncrypt) {
-        encryptedText += aluraEncryptionMethod[char] || char;
+        encryptedText += encryptionMethod[char] || char;
     }
 
     return encryptedText;
 }
 
+function cesarEncryptionMethod(text, move) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    text = text.toLowerCase();
+
+    let cipherText = '';
+
+    for (let char of text) {
+        if (alphabet.includes(char)) {
+            let newIndex = (alphabet.indexOf(char) + move) % 26;
+            cipherText += alphabet[newIndex];
+        } else {
+            cipherText += char;
+        }
+    }
+
+    return cipherText;
+}
+
+function vigenereEncryptionMethod(text, key) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    text = text.toLowerCase().replace(/\s/g, '');
+    key = key.toLowerCase().repeat(Math.ceil(text.length / key.length));
+
+    let cipherText = '';
+
+    for (let i = 0; i < text.length; i++) {
+        if (alphabet.includes(text[i])) {
+            let textIndex = alphabet.indexOf(text[i]);
+            let keyIndex = alphabet.indexOf(key[i]);
+            let newIndex = (textIndex + keyIndex) % 26;
+            cipherText += alphabet[newIndex];
+        } else {
+            cipherText += text[i];
+        }
+    }
+
+    return cipherText;
+}
+
+
 /* ==============================-------------------- ENCRYPT BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
 function encryptBtn() {
     const textArea = document.querySelector('.encrypt__textarea-input');
     const message = document.querySelector('.decrypt__textarea');
+    const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
 
     if (validateText()) {
-        const encryptedText = encrypt(textArea.value);
+        let encryptedText;
+
+        if (dropdownTitle === "Alura Encrypt") {
+            encryptedText = aluraEncryptionMethod(textArea.value);
+        } else if (dropdownTitle === "César") {
+            const shift = 3;
+            encryptedText = cesarEncryptionMethod(textArea.value, shift);
+        } else if (dropdownTitle === "Vigenère") {
+            const key = "clave";
+            encryptedText = vigenereEncryptionMethod(textArea.value, key);
+        } else {
+            alert("Por favor, selecciona un método de encriptación.");
+            return;
+        }
 
         message.value = encryptedText;
         message.style.backgroundImage = "none";
