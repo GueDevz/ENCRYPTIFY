@@ -111,7 +111,7 @@ characterCounter();
 function validateText() {
     const textArea = document.querySelector('.encrypt__textarea-input');
     const validationNotice = document.querySelector('.encrypt__textarea-notice');
-    const regex = /^[a-z0-9\s]*$/;
+    const regex = /^[a-z\s]*$/;
     const contentTextarea = textArea.value;
 
     if (contentTextarea === "") {
@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function generatePassword() {
     const btnPass = document.querySelector('.encrypt__button--generate-password');
+    const textArea = document.querySelector('.encrypt__textarea-input');
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
     const passwordModal = document.querySelector('.password__modal');
     const passwordElement = document.querySelector('.password__modal-pass');
@@ -149,6 +150,12 @@ function generatePassword() {
     const passwordLength = 20;
 
     btnPass.addEventListener('click', () => {
+        // Verificar si hay texto en el textarea antes de generar la contraseña
+        if (textArea.value.trim() === '') {
+            alert('Por favor, introduce texto en el campo antes de generar una contraseña.');
+            return;
+        }
+
         let password = '';
         while (password.length < passwordLength) {
             const randomChar = characters[Math.floor(Math.random() * characters.length)];
