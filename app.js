@@ -201,27 +201,6 @@ function cesarEncryptionMethod(text, move) {
     return cipherText;
 }
 
-function vigenereEncryptionMethod(text, key) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    text = text.toLowerCase().replace(/\s/g, '');
-    key = key.toLowerCase().repeat(Math.ceil(text.length / key.length));
-
-    let cipherText = '';
-
-    for (let i = 0; i < text.length; i++) {
-        if (alphabet.includes(text[i])) {
-            let textIndex = alphabet.indexOf(text[i]);
-            let keyIndex = alphabet.indexOf(key[i]);
-            let newIndex = (textIndex + keyIndex) % 26;
-            cipherText += alphabet[newIndex];
-        } else {
-            cipherText += text[i];
-        }
-    }
-
-    return cipherText;
-}
-
 
 /* ==============================-------------------- ENCRYPT BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
 function encryptBtn() {
@@ -247,7 +226,7 @@ function encryptBtn() {
 
         message.value = encryptedText;
         message.style.backgroundImage = "none";
-        // textArea.value = '';
+        textArea.value = '';
     }
 }
 
@@ -368,27 +347,6 @@ function cesarDecryptionMethod(text, move) {
     return decryptedText;
 }
 
-function vigenereDecryptionMethod(text, key) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    text = text.toLowerCase().replace(/\s/g, '');
-    key = key.toLowerCase().repeat(Math.ceil(text.length / key.length));
-
-    let decryptedText = '';
-
-    for (let i = 0; i < text.length; i++) {
-        if (alphabet.includes(text[i])) {
-            let textIndex = alphabet.indexOf(text[i]);
-            let keyIndex = alphabet.indexOf(key[i]);
-            let newIndex = (textIndex - keyIndex + 26) % 26;
-            decryptedText += alphabet[newIndex];
-        } else {
-            decryptedText += text[i];
-        }
-    }
-
-    return decryptedText;
-}
-
 
 /* ==============================-------------------- DECRYPT BUTTON FUNCTION |SECTION DECRYPT|--------------------============================== */
 
@@ -413,9 +371,6 @@ function decryptBtn() {
     } else if (dropdownTitle === "César") {
         const shift = 3;
         decryptedText = cesarDecryptionMethod(message.value, shift);
-    } else if (dropdownTitle === "Vigenère") {
-        const key = inputPassword.value.trim();
-        decryptedText = vigenereDecryptionMethod(message.value, key);
     } else {
         return;
     }
