@@ -492,3 +492,18 @@ function decryptBtn() {
 
 const btnDecrypt = document.querySelector('.decrypt__button--decrypt');
 btnDecrypt.addEventListener('click', decryptBtn);
+
+
+/* ==============================-------------------- FOOTER --------------------============================== */
+
+function changeFooterText() {
+    const footerText = document.querySelector('.footer__text');
+
+    if (window.matchMedia("(max-width: 460px)").matches) {
+        footerText.innerText = "ONE + Alura Latam";
+    } else {
+        footerText.innerText = "Oracle Next Education + Alura Latam";
+    }
+
+}
+changeFooterText();
