@@ -465,11 +465,12 @@ function decryptBtn() {
     const inputPassword = document.querySelector('.decrypt__input-pass');
 
     if (!inputPassword.disabled && inputPassword.value.trim() === '') {
-
         inputPassword.placeholder = 'Colocar contraseña';
         inputPassword.style.borderColor = 'red';
         inputPassword.focus();
         return;
+    } else {
+        inputPassword.style.borderColor = '#20db93';
     }
 
     let decryptedText;
@@ -480,7 +481,7 @@ function decryptBtn() {
         const shift = 3;
         decryptedText = cesarDecryptionMethod(message.value, shift);
     } else if (dropdownTitle === "Vigenère") {
-        const key = inputPassword.value.trim(); // Usar la contraseña ingresada como clave
+        const key = inputPassword.value.trim();
         decryptedText = vigenereDecryptionMethod(message.value, key);
     } else {
         return;
