@@ -111,7 +111,7 @@ characterCounter();
 function validateText() {
     const textArea = document.querySelector('.encrypt__textarea-input');
     const validationNotice = document.querySelector('.encrypt__textarea-notice');
-    const regex = /^[a-z0-9\s]*$/;
+    const regex = /^[a-z\s]*$/;
     const contentTextarea = textArea.value;
 
     if (contentTextarea === "") {
@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function generatePassword() {
     const btnPass = document.querySelector('.encrypt__button--generate-password');
+    const textArea = document.querySelector('.encrypt__textarea-input');
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
     const passwordModal = document.querySelector('.password__modal');
     const passwordElement = document.querySelector('.password__modal-pass');
@@ -149,6 +150,12 @@ function generatePassword() {
     const passwordLength = 20;
 
     btnPass.addEventListener('click', () => {
+        // Verificar si hay texto en el textarea antes de generar la contraseña
+        if (textArea.value.trim() === '') {
+            alert('Por favor, introduce texto en el campo antes de generar una contraseña.');
+            return;
+        }
+
         let password = '';
         while (password.length < passwordLength) {
             const randomChar = characters[Math.floor(Math.random() * characters.length)];
@@ -160,6 +167,7 @@ function generatePassword() {
         passwordElement.textContent = password;
         passwordModal.style.display = 'grid';
         inputPassword.disabled = false;
+        inputPassword.style.border = '.1px solid #20db93';
         inputPassword.placeholder = 'Introduce la Contraseña';
         inputPassword.style.borderColor = '';
 
@@ -319,6 +327,7 @@ btnEncrypt.addEventListener('click', encryptBtn);
 document.addEventListener('DOMContentLoaded', () => {
     const inputPassword = document.querySelector('.decrypt__input-pass');
     inputPassword.disabled = true;
+    inputPassword.style.border = 'none';
 });
 
 
@@ -343,7 +352,19 @@ function resetText() {
         charCountHighlight.textContent = 0;
         dropdownTitle.innerText = 'Seleccionar una opción';
         inputPassword.placeholder = 'Contraseña';
-        inputPassword.style.borderColor = '#20db93';
+        inputPassword.style.border = 'none';
+
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            message.style.backgroundImage = "url('../assets/images/img-bg-1.png')";
+        } else if (window.matchMedia("(max-width: 1024px)").matches) {
+            message.style.backgroundImage = "url('../assets/images/img-bg-1.png')";
+        } else {
+            message.style.backgroundImage = "url('../assets/images/img-bg-2.png')";
+        }
+
+        message.addEventListener('focus', () => {
+            message.style.backgroundImage = 'none';
+        });
 
         navigator.clipboard.writeText('').then(() => {
             console.log('Portapapeles limpiado');
@@ -444,11 +465,12 @@ function decryptBtn() {
     const inputPassword = document.querySelector('.decrypt__input-pass');
 
     if (!inputPassword.disabled && inputPassword.value.trim() === '') {
-
         inputPassword.placeholder = 'Colocar contraseña';
         inputPassword.style.borderColor = 'red';
         inputPassword.focus();
         return;
+    } else {
+        inputPassword.style.borderColor = '#20db93';
     }
 
     let decryptedText;
@@ -459,7 +481,7 @@ function decryptBtn() {
         const shift = 3;
         decryptedText = cesarDecryptionMethod(message.value, shift);
     } else if (dropdownTitle === "Vigenère") {
-        const key = inputPassword.value.trim(); // Usar la contraseña ingresada como clave
+        const key = inputPassword.value.trim();
         decryptedText = vigenereDecryptionMethod(message.value, key);
     } else {
         return;

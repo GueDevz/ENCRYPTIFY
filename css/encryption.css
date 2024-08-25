@@ -27,6 +27,11 @@
 
 /* ---------- LOGO ---------- */
 .header__logo {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header__logo-image {
     width: 18rem;
 }
 
@@ -92,6 +97,7 @@ main {
             cursor: pointer;
             border-radius: var(--border-radius);
             border: .1rem solid var(--green-accent-colour);
+            box-shadow: var(--box-shadow);
         }
         .dropdown__select,
         .dropdown__option-list,
@@ -261,6 +267,7 @@ main {
     .decrypt {
         display: grid;
         gap: var(--gap-small);
+        width: 95%;
     }
 
     /* ---------- INPUT PASS ---------- */
@@ -280,6 +287,18 @@ main {
         background: rgba(255, 255, 255, 0.1);
     }
     /* ---------- TEXTAREA ---------- */
+
+    .decrypt__textarea {
+        background-image: url('../assets/images/img-bg-1.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 30rem;
+        padding: 10px;
+    }
+
+    .decrypt__textarea:focus {
+        background-image: none;
+    }
 
     /* ---------- BUTTONS ---------- */
     .decrypt__actions {
@@ -329,6 +348,13 @@ main {
         letter-spacing: 0.35rem;
         color: var(--text-btn-alt);
         background: var(--green-accent-colour-alt);
+    }
+
+    .dropdown__select,
+    .dropdown__option-list,
+    .textarea__input,
+    .decrypt__input-pass {
+        box-shadow: var(--box-shadow);
     }
 
 
@@ -446,20 +472,30 @@ main {
 /*! ----------===== SECTION ENCRYPT =====---------- */
 
 .encrypt {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
+}
+
+.textarea__input {
+    height: 20rem;
 }
 
 .encrypt__actions {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
 }
+
 
 /*! ----------===== SECTION DECRYPT =====---------- */
 .decrypt {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
+}
+
+.decrypt__textarea {
+    height: 20rem;
+    background-size: 40rem;
 }
 
 .decrypt__actions {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
 }
 
 
@@ -472,6 +508,10 @@ main {
 
 @media (width >= 1024px) {
 /*? ==============================-------------------- CONTAINER STYLES  --------------------============================== */
+
+.container {
+    width: 80%;
+}
 
 
 /*? ==============================-------------------- HEADER STYLES  --------------------============================== */
@@ -501,12 +541,13 @@ main {
 
 .decrypt__textarea {
     height: 46rem;
+    background-image: url('../assets/images/img-bg-2.png');
+    background-size: 25rem;
 }
 
 /*! ----------===== SECTION DECRYPT =====---------- */
 .decrypt {
     grid-area: decrypt;
-    min-height: 80%;
 }
 
 /*? ==============================-------------------- FOOTER STYLES  --------------------============================== */

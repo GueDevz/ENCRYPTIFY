@@ -16,7 +16,9 @@
 <body>
     <div class="container">
         <header class="header">
-            <img src="../assets/images/Logo-light.svg" alt="Logo de Encryptify" class="header__logo">
+            <a href="../index.html" class="header__logo">
+                <img src="../assets/images/Logo-light.svg" alt="Logo de Encryptify" class="header__logo-image">
+            </a>
             <button class="header__button" aria-label="Cambiar a modo claro">
                 <i class="bx bx-sun header__button-icon" aria-hidden="true"></i>
             </button>
@@ -75,6 +77,7 @@
                         <span class="encrypt__button-text">Encriptar</span>
                     </button>
                 </div>
+
                 <div class="password__modal">
                     <div class="password__modal-content">
                         <h4 class="password__modal-title">Contraseña Generada</h4>
@@ -100,6 +103,7 @@
                 <h2 class="decrypt__title main__title">Mensaje</h2>
                 <input type="password" class="decrypt__input-pass" placeholder="Contraseña">
                 <textarea class="decrypt__textarea textarea__input" id="textareaDecrypt" maxlength="500"></textarea>
+
                 <div class="decrypt__actions">
                     <button type="button" class="decrypt__button decrypt__button--decrypt">
                         <span class="encrypt__button-icon">
@@ -118,6 +122,7 @@
                         </span>
                     </button>
                 </div>
+
             </section>
         </main>
         <footer class="footer">
