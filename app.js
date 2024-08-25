@@ -347,6 +347,18 @@ function resetText() {
         inputPassword.placeholder = 'Contraseña';
         inputPassword.style.border = 'none';
 
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            message.style.backgroundImage = "url('../assets/images/img-bg-1.png')";
+        } else if (window.matchMedia("(max-width: 1024px)").matches) {
+            message.style.backgroundImage = "url('../assets/images/img-bg-1.png')";
+        } else {
+            message.style.backgroundImage = "url('../assets/images/img-bg-2.png')";
+        }
+
+        message.addEventListener('focus', () => {
+            message.style.backgroundImage = 'none';
+        });
+
         navigator.clipboard.writeText('').then(() => {
             console.log('Portapapeles limpiado');
         }).catch(err => {

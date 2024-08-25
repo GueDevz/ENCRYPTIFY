@@ -286,6 +286,18 @@ main {
     }
     /* ---------- TEXTAREA ---------- */
 
+    .decrypt__textarea {
+        background-image: url('../assets/images/img-bg-1.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 30rem;
+        padding: 10px;
+    }
+
+    .decrypt__textarea:focus {
+        background-image: none;
+    }
+
     /* ---------- BUTTONS ---------- */
     .decrypt__actions {
         display: grid;
@@ -451,20 +463,30 @@ main {
 /*! ----------===== SECTION ENCRYPT =====---------- */
 
 .encrypt {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
+}
+
+.textarea__input {
+    height: 20rem;
 }
 
 .encrypt__actions {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
 }
+
 
 /*! ----------===== SECTION DECRYPT =====---------- */
 .decrypt {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
+}
+
+.decrypt__textarea {
+    height: 20rem;
+    background-size: 40rem;
 }
 
 .decrypt__actions {
-    gap: var(--gap-large);
+    gap: var(--medium-icon);
 }
 
 
@@ -477,6 +499,10 @@ main {
 
 @media (width >= 1024px) {
 /*? ==============================-------------------- CONTAINER STYLES  --------------------============================== */
+
+.container {
+    width: 80%;
+}
 
 
 /*? ==============================-------------------- HEADER STYLES  --------------------============================== */
@@ -506,12 +532,13 @@ main {
 
 .decrypt__textarea {
     height: 46rem;
+    background-image: url('../assets/images/img-bg-2.png');
+    background-size: 25rem;
 }
 
 /*! ----------===== SECTION DECRYPT =====---------- */
 .decrypt {
     grid-area: decrypt;
-    min-height: 80%;
 }
 
 /*? ==============================-------------------- FOOTER STYLES  --------------------============================== */
