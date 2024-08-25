@@ -97,6 +97,7 @@ main {
             cursor: pointer;
             border-radius: var(--border-radius);
             border: .1rem solid var(--green-accent-colour);
+            box-shadow: var(--box-shadow);
         }
         .dropdown__select,
         .dropdown__option-list,
@@ -266,6 +267,7 @@ main {
     .decrypt {
         display: grid;
         gap: var(--gap-small);
+        width: 95%;
     }
 
     /* ---------- INPUT PASS ---------- */
@@ -346,6 +348,13 @@ main {
         letter-spacing: 0.35rem;
         color: var(--text-btn-alt);
         background: var(--green-accent-colour-alt);
+    }
+
+    .dropdown__select,
+    .dropdown__option-list,
+    .textarea__input,
+    .decrypt__input-pass {
+        box-shadow: var(--box-shadow);
     }
 
 
