@@ -83,7 +83,6 @@ function generatePassword() {
     const passwordLength = 20;
 
     btnPass.addEventListener('click', () => {
-        // Verificar si hay texto en el textarea antes de generar la contraseña
         if (textArea.value.trim() === '') {
             alert('Por favor, introduce texto en el campo antes de generar una contraseña.');
             return;
@@ -115,6 +114,7 @@ function generatePassword() {
 
         btnClose.addEventListener('click', () => {
             passwordModal.style.display = 'none';
+            modalTitle.textContent = 'Contraseña Generada';
         });
     });
 }
