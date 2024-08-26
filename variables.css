@@ -90,7 +90,7 @@
         font-weight: var(--font-w-500);
         overflow: hidden;
         color: var(--dark-colour-main-text);
-        background-image: url(../assets/images/background.png);
+        background-image: url(./assets/images/background.png);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top;
