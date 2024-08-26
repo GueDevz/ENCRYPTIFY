@@ -96,6 +96,7 @@ function generatePassword() {
             }
         }
 
+        generatedPassword = password;
         passwordElement.textContent = password;
         passwordModal.style.display = 'grid';
         inputPassword.disabled = false;
@@ -239,6 +240,8 @@ btnEncrypt.addEventListener('click', encryptBtn);
 
 /* ==============================-------------------- DISABLE PASSWORD INPUT |SECTION DECRYPT|--------------------============================== */
 
+let generatedPassword = '';
+
 document.addEventListener('DOMContentLoaded', () => {
     const inputPassword = document.querySelector('.decrypt__input-pass');
     inputPassword.disabled = true;
@@ -358,9 +361,10 @@ function decryptBtn() {
     const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
     const inputPassword = document.querySelector('.decrypt__input-pass');
 
-    if (!inputPassword.disabled && inputPassword.value.trim() === '') {
-        inputPassword.placeholder = 'Colocar contraseña';
+    if (!inputPassword.disabled && inputPassword.value.trim() !== generatedPassword) {
+        inputPassword.placeholder = 'Contraseña incorrecta';
         inputPassword.style.borderColor = 'red';
+        inputPassword.value = '';
         inputPassword.focus();
         return;
     } else {
