@@ -52,7 +52,7 @@ function validateText() {
         validationNotice.style.color = "#94a4b7";
         return false;
     } else if (!regex.test(contentTextarea)) {
-        validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> Error: tu texto contiene mayúsculas o caracteres";
+        validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> El texto contiene mayúsculas o caracteres especiales";
         validationNotice.style.color = "red";
         return false;
     } else {
@@ -83,7 +83,6 @@ function generatePassword() {
     const passwordLength = 20;
 
     btnPass.addEventListener('click', () => {
-        // Verificar si hay texto en el textarea antes de generar la contraseña
         if (textArea.value.trim() === '') {
             alert('Por favor, introduce texto en el campo antes de generar una contraseña.');
             return;
@@ -97,6 +96,7 @@ function generatePassword() {
             }
         }
 
+        generatedPassword = password;
         passwordElement.textContent = password;
         passwordModal.style.display = 'grid';
         inputPassword.disabled = false;
@@ -115,6 +115,7 @@ function generatePassword() {
 
         btnClose.addEventListener('click', () => {
             passwordModal.style.display = 'none';
+            modalTitle.textContent = 'Contraseña Generada';
         });
     });
 }
@@ -203,10 +204,13 @@ function cesarEncryptionMethod(text, move) {
 
 
 /* ==============================-------------------- ENCRYPT BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
 function encryptBtn() {
     const textArea = document.querySelector('.encrypt__textarea-input');
     const message = document.querySelector('.decrypt__textarea');
     const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
+    const charCountHighlight = document.querySelector('.encrypt__char-count--highlight');
+    const validationNotice = document.querySelector('.encrypt__textarea-notice');
 
     if (validateText()) {
         let encryptedText;
@@ -216,9 +220,6 @@ function encryptBtn() {
         } else if (dropdownTitle === "César") {
             const shift = 3;
             encryptedText = cesarEncryptionMethod(textArea.value, shift);
-        } else if (dropdownTitle === "Vigenère") {
-            const key = "clave";
-            encryptedText = vigenereEncryptionMethod(textArea.value, key);
         } else {
             alert("Por favor, selecciona un método de encriptación.");
             return;
@@ -227,6 +228,9 @@ function encryptBtn() {
         message.value = encryptedText;
         message.style.backgroundImage = "none";
         textArea.value = '';
+        charCountHighlight.textContent = 0;
+        validationNotice.innerHTML = "<i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos";
+        validationNotice.style.color = "#94a4b7";
     }
 }
 
@@ -235,6 +239,8 @@ btnEncrypt.addEventListener('click', encryptBtn);
 
 
 /* ==============================-------------------- DISABLE PASSWORD INPUT |SECTION DECRYPT|--------------------============================== */
+
+let generatedPassword = '';
 
 document.addEventListener('DOMContentLoaded', () => {
     const inputPassword = document.querySelector('.decrypt__input-pass');
@@ -355,9 +361,10 @@ function decryptBtn() {
     const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
     const inputPassword = document.querySelector('.decrypt__input-pass');
 
-    if (!inputPassword.disabled && inputPassword.value.trim() === '') {
-        inputPassword.placeholder = 'Colocar contraseña';
+    if (!inputPassword.disabled && inputPassword.value.trim() !== generatedPassword) {
+        inputPassword.placeholder = 'Contraseña incorrecta';
         inputPassword.style.borderColor = 'red';
+        inputPassword.value = '';
         inputPassword.focus();
         return;
     } else {
