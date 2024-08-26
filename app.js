@@ -52,7 +52,7 @@ function validateText() {
         validationNotice.style.color = "#94a4b7";
         return false;
     } else if (!regex.test(contentTextarea)) {
-        validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> Error: tu texto contiene mayúsculas o caracteres";
+        validationNotice.innerHTML = "<i class='bx bxs-error-circle'></i> El texto contiene mayúsculas o caracteres especiales";
         validationNotice.style.color = "red";
         return false;
     } else {
@@ -203,10 +203,13 @@ function cesarEncryptionMethod(text, move) {
 
 
 /* ==============================-------------------- ENCRYPT BUTTON FUNCTION |SECTION ENCRYPT|--------------------============================== */
+
 function encryptBtn() {
     const textArea = document.querySelector('.encrypt__textarea-input');
     const message = document.querySelector('.decrypt__textarea');
     const dropdownTitle = document.querySelector('.dropdown__select-title').innerText;
+    const charCountHighlight = document.querySelector('.encrypt__char-count--highlight');
+    const validationNotice = document.querySelector('.encrypt__textarea-notice');
 
     if (validateText()) {
         let encryptedText;
@@ -216,9 +219,6 @@ function encryptBtn() {
         } else if (dropdownTitle === "César") {
             const shift = 3;
             encryptedText = cesarEncryptionMethod(textArea.value, shift);
-        } else if (dropdownTitle === "Vigenère") {
-            const key = "clave";
-            encryptedText = vigenereEncryptionMethod(textArea.value, key);
         } else {
             alert("Por favor, selecciona un método de encriptación.");
             return;
@@ -227,6 +227,9 @@ function encryptBtn() {
         message.value = encryptedText;
         message.style.backgroundImage = "none";
         textArea.value = '';
+        charCountHighlight.textContent = 0;
+        validationNotice.innerHTML = "<i class='bx bxs-info-circle'></i> Solo letras minúsculas y sin acentos";
+        validationNotice.style.color = "#94a4b7";
     }
 }
 
