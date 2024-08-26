@@ -80,19 +80,4 @@
         font-size: 62.5%;
     }
 
-    body {
-        display: flex;
-        place-content: center;
-        max-width: 100vw;
-        height: 100vh;
-        font-family: var(--main-font);
-        font-size: var(--regular);
-        font-weight: var(--font-w-500);
-        overflow: hidden;
-        color: var(--dark-colour-main-text);
-        background-image: url(./assets/images/background.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top;
-    }
 
