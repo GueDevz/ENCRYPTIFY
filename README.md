@@ -1,14 +1,18 @@
-# ENCRYPTIFY
+# ENCRYPTIFY 
 
-![Logo de Encryptify](assets/images/Logo-light.svg)
+![Logo de Encryptify](assets/images/Logo-light.svg)  
+
+## Sitio web
+
+https://guedevz.github.io/ENCRYPTIFY  
 
 ## Descripción del Proyecto
 
 **Encryptify** es una aplicación web diseñada para encriptar y desencriptar textos utilizando diferentes métodos de cifrado. La herramienta es útil para proteger información, ya que transforma el texto original en una versión cifrada que solo puede ser revertida utilizando la misma técnica de desencriptación.
 
-El proyecto incluye una interfaz sencilla y fácil de usar donde los usuarios pueden seleccionar el método de encriptación deseado, ingresar el texto a cifrar, generar una contraseña para más protección (opcional) y obtener una versión encriptada del mismo. De manera similar, los usuarios pueden desencriptar un texto previamente cifrado utilizando el mismo método de cifrado.
+El proyecto incluye una interfaz sencilla y fácil de usar donde los usuarios pueden seleccionar el método de encriptación deseado, ingresar el texto a cifrar, generar una contraseña para más protección (opcional) y obtener una versión encriptada del mismo. De manera similar, los usuarios pueden desencriptar un texto previamente cifrado utilizando el mismo método de cifrado.  
 
-
+  
 [![ENCRYPTIFY-2.png](https://i.postimg.cc/057pQX4t/ENCRYPTIFY-2.png)](https://postimg.cc/G9hBgKdY)
 
 
